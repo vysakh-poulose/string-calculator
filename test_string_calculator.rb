@@ -15,4 +15,9 @@ class StringCalculatorTest < Minitest::Test
     result = @calculator.add("1")
     assert_equal 1, result
   end
+
+  def test_single_number_along_with_comma_should_return_the_same_number
+    result = @calculator.add("12,")
+    assert_equal 12, result
+  end
 end
