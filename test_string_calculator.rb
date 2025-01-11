@@ -45,4 +45,9 @@ class StringCalculatorTest < Minitest::Test
     result = @calculator.add("1\n2\n3,4")
     assert_equal 10, result
   end
+
+  def test_custom_delimiters_should_be_supported
+    result = @calculator.add("//;\n1;2;3")
+    assert_equal 6, result
+  end
 end
