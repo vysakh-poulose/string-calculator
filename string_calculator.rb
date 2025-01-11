@@ -2,6 +2,7 @@ class StringCalculator
   def add(numbers)
     return 0 if numbers.empty?
 
-    numbers.split(",").map(&:to_i).sum
+    delimiters = [",","\n"]
+    numbers.split(Regexp.union(delimiters)).map(&:to_i).sum
   end
 end
