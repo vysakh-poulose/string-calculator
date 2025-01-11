@@ -16,7 +16,7 @@ class StringCalculator
     negative_numbers = number_list.select(&:negative?)
     raise NegativeNumberException, negative_numbers unless negative_numbers.empty?
 
-    number_list.sum
+    number_list.reject { |number| number > 1000 }.sum
   end
 
   def extract_delimiter(numbers)
