@@ -27,17 +27,17 @@ class StringCalculatorTest < Minitest::Test
   end
 
   def test_two_numbers_should_return_their_sum
-    result =  @calculator.add("12,1")
+    result = @calculator.add("12,1")
     assert_equal 13, result
   end
 
   def test_multiple_numbers_should_return_their_sum
-    result =  @calculator.add("1,2,3,4")
+    result = @calculator.add("1,2,3,4")
     assert_equal 10, result
   end
 
   def test_multiple_numbers_with_random_commas_should_return_their_sum
-    result =  @calculator.add("1,,2,,,4")
+    result = @calculator.add("1,,2,,,4")
     assert_equal 7, result
   end
 

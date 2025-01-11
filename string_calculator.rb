@@ -10,7 +10,7 @@ class StringCalculator
   def add(numbers)
     return 0 if numbers.empty?
 
-    delimiter, number_sequence = extract_delimiters(numbers)
+    delimiter, number_sequence = extract_delimiter(numbers)
     number_list = number_sequence.split(delimiter).map(&:to_i)
 
     negative_numbers = number_list.select(&:negative?)
@@ -19,7 +19,7 @@ class StringCalculator
     number_list.sum
   end
 
-  def extract_delimiters(numbers)
+  def extract_delimiter(numbers)
     return [DEFAULT_DELIMITERS_REGEX, numbers] unless numbers.start_with?("//")
 
     delimiter_string, number_sequence = numbers.split("\n", 2)
