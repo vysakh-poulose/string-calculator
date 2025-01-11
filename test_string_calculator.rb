@@ -40,4 +40,9 @@ class StringCalculatorTest < Minitest::Test
     result =  @calculator.add("1,,2,,,4")
     assert_equal 7, result
   end
+
+  def test_multiple_numbers_should_return_their_sum_with_newline_as_a_delimiter
+    result = @calculator.add("1\n2\n3,4")
+    assert_equal 10, result
+  end
 end
