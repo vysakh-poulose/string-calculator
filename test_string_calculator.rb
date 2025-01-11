@@ -52,7 +52,7 @@ class StringCalculatorTest < Minitest::Test
   end
 
   def test_negative_numbers_should_not_be_valid
-    error = assert_raise NegativeNumberException do
+    error = assert_raises NegativeNumberException do
       @calculator.add("1,-2,-3")
     end
     assert_equal "negative numbers not allowed -2, -3", error.message

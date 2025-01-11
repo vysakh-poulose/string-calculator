@@ -1,3 +1,9 @@
+class NegativeNumberException < StandardError
+  def initialize(negative_numbers)
+    super("negative numbers not allowed #{negative_numbers.join(', ')}")
+  end
+end
+
 class StringCalculator
   DEFAULT_DELIMITERS_REGEX = /[,|\n]/.freeze
 
@@ -5,7 +11,12 @@ class StringCalculator
     return 0 if numbers.empty?
 
     delimiter, number_sequence = extract_delimiters(numbers)
-    number_sequence.split(delimiter).map(&:to_i).sum
+    number_list = number_sequence.split(delimiter).map(&:to_i)
+
+    negative_numbers = number_list.select(&:negative?)
+    raise NegativeNumberException, negative_numbers unless negative_numbers.empty?
+
+    number_list.sum
   end
 
   def extract_delimiters(numbers)
