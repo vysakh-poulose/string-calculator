@@ -10,4 +10,9 @@ class StringCalculatorTest < Minitest::Test
     result = @calculator.add("")
     assert_equal 0, result
   end
+
+  def test_single_number_should_return_the_same_number
+    result = @calculator.add("1")
+    assert_equal 1, result
+  end
 end
