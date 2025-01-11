@@ -62,4 +62,9 @@ class StringCalculatorTest < Minitest::Test
     result = @calculator.add("//;\n1;2;1001")
     assert_equal 3, result
   end
+
+  def test_custom_delimiters_can_be_of_any_length
+    result = @calculator.add("//[***]\n1***2***3")
+    assert_equal 6, result
+  end
 end
