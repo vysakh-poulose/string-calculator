@@ -6,6 +6,7 @@ end
 
 class StringCalculator
   DEFAULT_DELIMITERS_REGEX = /[,|\n]/.freeze
+  DELIMITERS_ENCLOSING_REGEX = /\[(.*?)\]/.freeze
 
   def add(numbers)
     return 0 if numbers.empty?
@@ -23,7 +24,7 @@ class StringCalculator
     return [DEFAULT_DELIMITERS_REGEX, numbers] unless numbers.start_with?("//")
 
     delimiter_string, number_sequence = numbers.split("\n", 2)
-    custom_delimiter = delimiter_string[2..]
+    custom_delimiter = delimiter_string.match?(DELIMITERS_ENCLOSING_REGEX) ? delimiter_string.scan(DELIMITERS_ENCLOSING_REGEX).flatten[0] : delimiter_string[2..]
     [custom_delimiter, number_sequence]
   end
 end
